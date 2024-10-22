@@ -27,10 +27,10 @@ function migrate(){
                     CHECK(typeof("size") = "text" AND length("size") >= 1 AND length("name") <= 8),
                     CHECK(typeof("color") = "text" AND length("color") >= 1 AND length("color") <= 8),
                     CHECK(typeof("damage") = "text" AND length("damage") >= 1 AND length("damage") <= 22),
-                    CHECK(typeof("survivors") = "numeric" AND survivors >= 0 AND survivors <= 200),
+                    CHECK(typeof("survivors") = "integer" AND survivors >= 0 AND survivors <= 200),
                     CHECK(typeof("survivors_description") = "text" AND length("survivors_description") >= 0 AND length("survivors_description") <= 400),
-                    CHECK(typeof("value") = "numeric" AND value >= 0 AND value <= 10),
-                    CHECK(typeof("military_power") = "numeric" AND military_power >= 0 AND military_power <= 10)
+                    CHECK(typeof("value") = "integer" AND value >= 0 AND value <= 10),
+                    CHECK(typeof("military_power") = "integer" AND military_power >= 0 AND military_power <= 10)
                 );            
             `,
             logError
@@ -46,7 +46,7 @@ function migrate(){
                     FOREIGN KEY(spaceship_id) REFERENCES spaceships(id),
 
                     CHECK(typeof("name") = "text" AND length("name") >= 1 AND length("name") <= 30),
-                    CHECK(typeof("power") = "numeric" AND power >= 1 AND power <= 10)
+                    CHECK(typeof("power") = "integer" AND power >= 1 AND power <= 10)
                 );
             `,
             logError

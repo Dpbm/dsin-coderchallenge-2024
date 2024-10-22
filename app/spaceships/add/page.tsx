@@ -120,6 +120,7 @@ export default function Add(){
     return(
         <>
         <h1>Adicione uma Nave</h1>
+        <a href="/spaceships">Listar Naves</a>
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="name">Nome da Nave</label>

@@ -10,3 +10,10 @@ export type Spaceship = {
     value:number;
     military_power:number;
 };
+
+export type SpaceshipPreview = {
+    id:number;
+    name:string;
+    color:string;
+    size: string;
+}
