@@ -1,8 +1,10 @@
 'use client';
 
-import { FormEvent } from 'react';
+import { ChangeEvent, FormEvent } from 'react';
 import {APIProvider, Map, Marker} from '@vis.gl/react-google-maps';
 import { useState } from 'react';
+import { Weapon } from '@/app/types/weapon';
+import { redirect } from 'next/navigation';
 
 const sizes = {
     small:'Pequeno',
@@ -34,10 +36,16 @@ const defaultPos = {
     lng:-49.9454726
 }
 
-
-
 export default function Add(){
     const [pos, setPos] = useState(defaultPos);
+
+    const [militaryPower, setMilitaryPower] = useState(0);
+
+    const [weaponName, setWeaponName] = useState('');
+    const [weaponPower, setWeaponPower] = useState(1);
+    const [weapons, setWeapons] = useState([] as Weapon[]);
+
+    const [sendingData, setSendingData] = useState(false);
 
     function handleDrag(event:google.maps.MapMouseEvent){
         const latLng = event.latLng;
@@ -50,11 +58,57 @@ export default function Add(){
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
-     
+
+
         const formData = new FormData(event.currentTarget)
-        console.log(formData);
-        // ...
-      }
+        formData.append('weapons', JSON.stringify(weapons));
+        setSendingData(true);
+
+
+        const res = await fetch('/api/spaceship',{
+            method: 'POST',
+            body: formData,
+          });
+
+        setSendingData(false);
+
+        if(!res.ok)
+            alert((await res.json())['message']);
+        else
+            redirect('/spaceships');
+    }
+
+    function handleMilitaryPower(event:ChangeEvent<HTMLInputElement>){
+        event.preventDefault();
+        const power = parseInt(event.target.value);
+        setMilitaryPower(power);
+
+        if(power <= 0){
+            setWeapons([]);
+            setWeaponName('');
+            setWeaponPower(1);
+        }
+    }
+
+    function handleWeaponName(event:ChangeEvent<HTMLInputElement>){
+        event.preventDefault();
+        setWeaponName(event.target.value);
+    }
+
+    function handleWeaponPower(event:ChangeEvent<HTMLInputElement>){
+        event.preventDefault();
+        setWeaponPower(parseInt(event.target.value));
+    }
+
+    function handleNewWeapon(){
+        setWeapons([...weapons, {name:weaponName, power:weaponPower}])
+    }
+
+    function handleRemoveWeapon(index:number){
+        const newWeapons = [...weapons];
+        newWeapons.splice(index, 1);
+        setWeapons([...newWeapons]);
+    }
 
     return(
         <>
@@ -115,12 +169,43 @@ export default function Add(){
 
             <div>
                 <label htmlFor="military_power">Poderio Militar Total da Nave</label>
-                <input type="number" name="military_power" id="military-power" min={0} max={10} step={1} defaultValue={0}></input>
+                <input type="number" name="military_power" id="military-power" min={0} max={10} step={1} defaultValue={0} onChange={handleMilitaryPower}></input>
             </div>
-            
-            <button type="submit">Adicionar Nave</button>
 
-            {/**Add weapons */}
+
+            {militaryPower > 0 ? (
+                <div>
+                    <h2>Adicionar Armamentos</h2>
+
+                    <label>Nome Do armamento</label>
+                    <input id="weapon" type='text' maxLength={30} defaultValue={weaponName} onChange={handleWeaponName}></input>
+
+                    <label>Poder Do armamento</label>
+                    <input type="number" id="weapon-power" min={1} max={10} step={1} defaultValue={weaponPower} onChange={handleWeaponPower}></input>
+
+                    <button type='button' onClick={handleNewWeapon}>Adicionar</button>
+
+
+                    <div>
+                        <p>Armamentos da Nave</p>
+                        {weapons.map((weapon, index) => (
+                            <div key={index} className="weapon-element">
+                                <div>
+                                    <p>{weapon.name}</p>
+                                    <p>Poder: {weapon.power}</p>
+                                </div>
+                                <div>
+                                    <button type="button" onClick={() => handleRemoveWeapon(index)}>Deletar</button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ): <></>}
+
+            <button type="submit" disabled={sendingData}>
+                {sendingData ? "Enviando Dados..." : 'Adicionar Nave'}
+            </button>
         </form>
         </>
     );
