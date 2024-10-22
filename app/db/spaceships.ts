@@ -1,7 +1,6 @@
 import db from "./db";
 import { SpaceshipPreview, Spaceship, FullSpaceship, SpaceshipRow } from "../types/spaceship";
 import {WeaponRow} from '../types/weapon';
-import { deleteWeapons, insertWeapons } from "./weapons";
 
 export async function insertSpaceship(spaceship:Spaceship) : Promise<number|null>{
     const {name, color, size, damage, gas, lat, lng, survivors, survivors_description, value, military_power} = spaceship;
@@ -29,7 +28,7 @@ export async function insertSpaceship(spaceship:Spaceship) : Promise<number|null
                 }
                 
                 console.error(`Failed on Insert Spaceship: ${error}`);
-                reject("Failed on Insert Spaceship");
+                reject(error);
             }
             
         );
@@ -39,7 +38,7 @@ export async function insertSpaceship(spaceship:Spaceship) : Promise<number|null
 export async function getSpaceshipsPreview():Promise<SpaceshipPreview[]>{
     return new Promise((resolve, reject) => {
         db.all(
-            `SELECT id, name, color, size FROM spaceships;`, [],
+            `SELECT id, name, color, size FROM spaceships ORDER BY id DESC;`, [],
             function(error:Error|null, rows:SpaceshipPreview[]){
                 if(!error){
                     resolve(rows || []);
@@ -47,7 +46,7 @@ export async function getSpaceshipsPreview():Promise<SpaceshipPreview[]>{
                 }
                 
                 console.error(`Failed on Get Spaceships: ${error}`);
-                reject("Failed on Get Spaceships");
+                reject(error);
             }
             
         );
@@ -65,7 +64,7 @@ export async function getSpaceship(id:number):Promise<FullSpaceship>{
                 }
                 
                 console.error(`Failed on Get Spaceship: ${error}`);
-                reject("Failed on Get Spaceship");
+                reject(error);
             }
             
         );
@@ -81,7 +80,7 @@ export async function getSpaceship(id:number):Promise<FullSpaceship>{
                 }
                 
                 console.error(`Failed on Get Spaceship Weapons: ${error}`);
-                reject("Failed on Get Spaceship Weapons");
+                reject(error);
             }
         );
     });
@@ -91,8 +90,8 @@ export async function getSpaceship(id:number):Promise<FullSpaceship>{
     return data;
 }
 
-export async function updateSpaceship(data:FullSpaceship) : Promise<unknown>{
-    const {name, color, damage, gas, id, lat, lng, military_power, size, survivors, survivors_description, value, weapons} = data;
+export async function updateSpaceship(data:SpaceshipRow) : Promise<unknown>{
+    const {name, color, damage, gas, id, lat, lng, military_power, size, survivors, survivors_description, value} = data;
 
     return new Promise(async (resolve, reject) => {
         db.run(
@@ -107,24 +106,26 @@ export async function updateSpaceship(data:FullSpaceship) : Promise<unknown>{
                     reject(error);
                     return;
                 }
+                resolve(0);
             }
         );
+    });
+}
 
-        try{
-            await deleteWeapons(id);
-        }catch(error){
-            console.error(`Failed Delete Weapons For Spaceship Edit: ${error}`);
-            reject(error);
-        }
-        const parsedWeapons = weapons.map((weapon:WeaponRow) => ({name:weapon.name, power:weapon.power}));
-
-        try{
-            await insertWeapons(parsedWeapons, id);
-        }catch(error){
-            console.error(`Failed Insert Weapons For Spaceship Edit: ${error}`);
-            reject(error);
-        }
-        
-        resolve(0);
+export async function deleteSpaceship(id:number):Promise<unknown>{
+    return new Promise((resolve, reject) => {
+        db.run(
+            `DELETE FROM spaceships WHERE id=?`, [id],
+            function(error:Error|null){
+                if(!error){
+                    resolve(0);
+                    return;
+                }
+                
+                console.error(`Failed on Delete Spaceship: ${error}`);
+                reject(error);
+            }
+            
+        );
     });
 }

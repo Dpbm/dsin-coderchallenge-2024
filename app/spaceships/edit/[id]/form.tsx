@@ -4,6 +4,7 @@ import {sizes, colors, damages, gases } from '../../../constants';
 import { ChangeEvent, useState, FormEvent } from 'react';
 import {createHash} from 'crypto';
 import {APIProvider, Map, Marker} from '@vis.gl/react-google-maps';
+import { redirect } from 'next/navigation';
 
 type FormProps = {
     spaceship: FullSpaceship,
@@ -17,6 +18,7 @@ export default function Form({spaceship,initialHash}:FormProps){
     const [weaponPower, setWeaponPower] = useState(1);
 
     const [sendingData, setSendingData] = useState(false);
+    const [deletingData, setDeletingData] = useState(false);
 
     const dataHash = createHash('sha256').update(JSON.stringify(data)).digest('hex');
 
@@ -51,6 +53,25 @@ export default function Form({spaceship,initialHash}:FormProps){
         else{
             alert('Dados Atualizados Com Sucesso!');
             window.location.reload();
+        }
+    }
+
+    async function handleDeleteSpaceship() {
+        if(!confirm("Você realmente quer deletar essa nave?")) return;
+
+        setDeletingData(true);
+
+        const res = await fetch(`/api/spaceship?id=${data.id}`,{
+            method: 'DELETE',
+        });
+
+        setDeletingData(false);
+
+        if(!res.ok)
+            alert((await res.json())['message']);
+        else{
+            alert('Dados Deletados Com Sucesso!');
+            redirect('/spaceships');
         }
     }
 
@@ -189,6 +210,9 @@ export default function Form({spaceship,initialHash}:FormProps){
 
             <button type="submit" disabled={sendingData || data.name.length <= 0 || dataHash == initialHash}>
                 {sendingData ? "Atualizando Dados..." : 'Atualizar Nave'}
+            </button>
+            <button type="button" onClick={handleDeleteSpaceship} disabled={deletingData}>
+                {deletingData ? 'Deletando Dados...' : 'Deletar Nave'}
             </button>
         </form>
     )
