@@ -1,13 +1,12 @@
-import { insertSpaceship } from '@/app/db/spaceships';
+import { getSpaceship, insertSpaceship } from '@/app/db/spaceships';
 import { insertWeapons } from '@/app/db/weapons';
+import { updateSpaceship } from '@/app/db/spaceships';
 import { Spaceship } from '@/app/types/spaceship';
 import { Weapon } from '@/app/types/weapon';
 import { NextRequest, NextResponse } from 'next/server';
 
 
-export async function POST(
-  request:NextRequest
-) {
+export async function POST(request:NextRequest) {
 
   const data =  await request.formData();
 
@@ -45,4 +44,34 @@ export async function POST(
 
 
   return NextResponse.json({message:'spaceship was successfully created!'}, {status:201});
+}
+
+export async function GET(request:NextRequest){
+  const id = request.nextUrl.searchParams.get("id");
+  if(!id) return NextResponse.json({message:'No Id was provided!'}, {status:404});
+
+  try{
+    const data = await getSpaceship(parseInt(id));
+    return NextResponse.json(data, {status:200});
+  }catch(error){
+    console.error(`Failed on get Spaceship: ${error}`);
+    return NextResponse.json({message:'Failed on Get Spaceship data! Please, try again later!'}, {status:500});
+  }
+}
+
+
+export async function PUT(request:NextRequest){
+
+  try{
+    const data = await request.json();
+
+    await updateSpaceship(data);
+    // it should be status=204, but for some reason next.js doesn't support it yet
+    return NextResponse.json({message:'Spaceship updated successfully!'}, {status:200});
+  }catch(error){
+    console.error(`failed on update Spaceship Route ${error}`);
+    return NextResponse.json({message:'Failed on Update Spaceship data! Please, try again later!'}, {status:500});
+  }
+
+
 }

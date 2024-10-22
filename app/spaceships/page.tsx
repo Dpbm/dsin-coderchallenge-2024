@@ -1,5 +1,3 @@
-'use server';
-
 import { SpaceshipPreview } from "../types/spaceship";
 
 export default async function Spaceships(){
