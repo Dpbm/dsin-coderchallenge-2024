@@ -39,6 +39,8 @@ const defaultPos = {
 export default function Add(){
     const [pos, setPos] = useState(defaultPos);
 
+    const [spaceshipName, setSpaceshipName] = useState('');
+
     const [militaryPower, setMilitaryPower] = useState(0);
 
     const [weaponName, setWeaponName] = useState('');
@@ -110,10 +112,20 @@ export default function Add(){
         setWeapons([...newWeapons]);
     }
 
+    function handleSpaceshipName(event:ChangeEvent<HTMLInputElement>){
+        event.preventDefault();
+        setSpaceshipName(event.target.value);
+    }
+
     return(
         <>
         <h1>Adicione uma Nave</h1>
         <form onSubmit={handleSubmit}>
+            <div>
+                <label htmlFor="name">Nome da Nave</label>
+                <input name="name" id="name" type='text' maxLength={30} defaultValue={spaceshipName} onChange={handleSpaceshipName}></input>
+            </div>
+
             <div>
                 <label htmlFor="size">Tamanho da Nave</label>
                 <select name="size" id="size">
@@ -183,7 +195,7 @@ export default function Add(){
                     <label>Poder Do armamento</label>
                     <input type="number" id="weapon-power" min={1} max={10} step={1} defaultValue={weaponPower} onChange={handleWeaponPower}></input>
 
-                    <button type='button' onClick={handleNewWeapon}>Adicionar</button>
+                    <button type='button' onClick={handleNewWeapon} disabled={weaponName.length <= 0}>Adicionar</button>
 
 
                     <div>
@@ -203,7 +215,7 @@ export default function Add(){
                 </div>
             ): <></>}
 
-            <button type="submit" disabled={sendingData}>
+            <button type="submit" disabled={sendingData || spaceshipName.length <= 0}>
                 {sendingData ? "Enviando Dados..." : 'Adicionar Nave'}
             </button>
         </form>

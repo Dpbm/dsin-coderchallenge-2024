@@ -1,4 +1,5 @@
 export type Spaceship = {
+    name:string;
     size: string;
     color:string;
     damage: string;
