@@ -58,3 +58,4 @@ features = pd.DataFrame({
 },columns=["value", "military_power", "damage", "size", "danger", "gas"])
 
 labels = pd.Series([0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4], dtype=np.uint8)
+from sklearn.utils import shuffle
