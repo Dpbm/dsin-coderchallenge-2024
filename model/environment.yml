@@ -10,5 +10,6 @@ dependencies:
     - pandas
     - tensorflow
     - scikit-learn
+    - tensorflowjs
 platforms:
   - linux-64

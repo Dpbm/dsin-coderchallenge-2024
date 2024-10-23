@@ -1,4 +1,5 @@
 import tensorflow as tf
+import tensorflowjs as tfjs
 from tensorflow import keras
 from tensorflow.keras import layers
 from sklearn.utils import shuffle
@@ -18,7 +19,7 @@ if __name__ == '__main__':
     print("Creating model...")
 
     model = tf.keras.Sequential([
-            layers.Dense(6, activation="relu"),
+            layers.Dense(6, activation="relu", input_shape=(6,)),
             layers.Dense(10, activation="relu"),
             layers.Dropout(0.2),
             layers.Dense(5, activation="softmax")
@@ -31,4 +32,4 @@ if __name__ == '__main__':
     model.fit(X, y, epochs=50)
    
     print("Saving model...")
-    model.save("john.keras")
+    tfjs.converters.save_keras_model(model, ".")

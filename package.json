@@ -7,9 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate": "tsc ./app/db/*.ts && node ./app/db/migrate.js && rm -rf ./app/db/*.js"
+    "migrate": "tsc ./app/db/db.ts ./app/db/migrate.ts && node ./app/db/migrate.js && rm -rf ./app/db/*.js"
   },
   "dependencies": {
+    "@tensorflow/tfjs": "^4.22.0",
     "@vis.gl/react-google-maps": "^1.3.0",
     "next": "15.0.0",
     "react": "19.0.0-rc-65a56d0e-20241020",

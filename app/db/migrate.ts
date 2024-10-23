@@ -24,6 +24,7 @@ function migrate(){
                     survivors_description TEXT NOT NULL,
                     value INTEGER NOT NULL,
                     military_power INTEGER NOT NULL,
+                    classification TEXT NOT NULL,
 
                     CHECK(typeof("name") = "text" AND length("name") >= 1 AND length("name") <= 30),
                     CHECK(typeof("size") = "text" AND length("size") >= 1 AND length("size") <= 8),
@@ -34,7 +35,8 @@ function migrate(){
                     CHECK(typeof("survivors_description") = "text" AND length("survivors_description") >= 0 AND length("survivors_description") <= 400),
                     CHECK(typeof("value") = "integer" AND value >= 0 AND value <= 10),
                     CHECK(typeof("danger") = "integer" AND danger >= 0 AND danger <= 10),
-                    CHECK(typeof("military_power") = "integer" AND military_power >= 0 AND military_power <= 10)
+                    CHECK(typeof("military_power") = "integer" AND military_power >= 0 AND military_power <= 10),
+                    CHECK(typeof("classification") = "text" AND length("classification") >= 1 AND length("classification") <= 28)
                 );            
             `,
             logError

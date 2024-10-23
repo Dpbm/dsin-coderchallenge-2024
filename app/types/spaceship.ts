@@ -29,6 +29,7 @@ export type SpaceshipRow = {
     survivors_description:string;
     value:number;
     military_power:number;
+    classification:string;
 };
 
 export type FullSpaceship = {
@@ -45,6 +46,7 @@ export type FullSpaceship = {
     survivors_description:string;
     value:number;
     military_power:number;
+    classification:string;
     weapons: WeaponRow[];
 };
 
@@ -53,4 +55,16 @@ export type SpaceshipPreview = {
     name:string;
     color:string;
     size: string;
+}
+
+export type SpaceshipClassification = {
+    id:number;
+    name:string;
+    size: string;
+    damage: string;
+    gas: string;
+    danger:number;
+    value:number;
+    military_power:number;
+    classification:string;
 }

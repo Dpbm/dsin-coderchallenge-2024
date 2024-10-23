@@ -8,6 +8,7 @@ export default async function Spaceships(){
         <>
             <h1>Todas as naves cadastradas: </h1>
             <a href="/spaceships/add">Adicionar Nave</a>
+            {spaceships.length > 0 ? <a href="/spaceships/classify">Classificação das naves</a> : <></>}
             {spaceships.map((spaceship:SpaceshipPreview, index:number) => (
                 <div key={index}>
                     <p>id: {spaceship.id}</p>
