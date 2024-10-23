@@ -33,7 +33,7 @@ export const gases = {
     hamster: 'Hamster',
     lightning : 'Raios',
     planets: 'Planetas',
-    supernova: 'Supernova'
+    supernova: 'Supernova',
     water: 'Água',
     hydrogen: 'Hidrogênio',
     iridium: "Irídio",

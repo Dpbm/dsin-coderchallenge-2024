@@ -158,6 +158,11 @@ export default function Form({spaceship,initialHash}:FormProps){
             </div>
 
             <div>
+                    <label htmlFor="danger">Grau de Periculosidade</label>
+                    <input type="number" name="danger" id="danger" min={0} max={10} step={1} defaultValue={data.danger}  onChange={handleChange}></input>
+                </div>
+
+            <div>
                 <label htmlFor="survivors">Total de Sobreviventes</label>
                 <input type="number" name="survivors" id="survivors" min={0} max={200} step={1} defaultValue={data.survivors} onChange={handleChange}></input>
             </div>

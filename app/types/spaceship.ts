@@ -8,6 +8,7 @@ export type Spaceship = {
     gas: string;
     lat:number;
     lng:number;
+    danger:number;
     survivors:number;
     survivors_description:string;
     value:number;
@@ -23,6 +24,7 @@ export type SpaceshipRow = {
     gas: string;
     lat:number;
     lng:number;
+    danger:number;
     survivors:number;
     survivors_description:string;
     value:number;
@@ -38,6 +40,7 @@ export type FullSpaceship = {
     gas: string;
     lat:number;
     lng:number;
+    danger:number;
     survivors:number;
     survivors_description:string;
     value:number;

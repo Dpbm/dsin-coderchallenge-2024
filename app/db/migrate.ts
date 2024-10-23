@@ -19,6 +19,7 @@ function migrate(){
                     gas TEXT NOT NULL,
                     lat NUMERIC NOT NULL,
                     lng NUMERIC NOT NULL,
+                    danger INTEGER NOT NULL,
                     survivors INTEGER NOT NULL,
                     survivors_description TEXT NOT NULL,
                     value INTEGER NOT NULL,
@@ -32,6 +33,7 @@ function migrate(){
                     CHECK(typeof("survivors") = "integer" AND survivors >= 0 AND survivors <= 200),
                     CHECK(typeof("survivors_description") = "text" AND length("survivors_description") >= 0 AND length("survivors_description") <= 400),
                     CHECK(typeof("value") = "integer" AND value >= 0 AND value <= 10),
+                    CHECK(typeof("danger") = "integer" AND danger >= 0 AND danger <= 10),
                     CHECK(typeof("military_power") = "integer" AND military_power >= 0 AND military_power <= 10)
                 );            
             `,

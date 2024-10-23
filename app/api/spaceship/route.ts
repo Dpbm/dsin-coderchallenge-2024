@@ -7,10 +7,9 @@ import { NextRequest, NextResponse } from 'next/server';
 
 
 export async function POST(request:NextRequest) {
-
   const data =  await request.formData();
 
-  const numericFields = ['lat', 'lng', 'survivors', 'value', 'military_power'];
+  const numericFields = ['lat', 'lng', 'survivors', 'value', 'military_power', 'danger'];
   const parsedData : Spaceship = {};
 
   let weapons : Weapon[] = [];

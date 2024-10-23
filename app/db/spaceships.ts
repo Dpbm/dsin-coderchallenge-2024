@@ -3,7 +3,7 @@ import { SpaceshipPreview, Spaceship, FullSpaceship, SpaceshipRow } from "../typ
 import {WeaponRow} from '../types/weapon';
 
 export async function insertSpaceship(spaceship:Spaceship) : Promise<number|null>{
-    const {name, color, size, damage, gas, lat, lng, survivors, survivors_description, value, military_power} = spaceship;
+    const {name, color, size, damage, gas, lat, lng, danger, survivors, survivors_description, value, military_power} = spaceship;
     return new Promise((resolve, reject) => {
         db.run(
             `
@@ -15,12 +15,13 @@ export async function insertSpaceship(spaceship:Spaceship) : Promise<number|null
                     gas,
                     lat, 
                     lng, 
+                    danger,
                     survivors, 
                     survivors_description, 
                     value, 
                     military_power)
-                VALUES (?,?,?,?,?,?,?,?,?,?,?);
-            `, [name, size, color, damage, gas, lat, lng, survivors, survivors_description, value, military_power],
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?);
+            `, [name, size, color, damage, gas, lat, lng, danger, survivors, survivors_description, value, military_power],
             function(error:Error|null){
                 if(!error){
                     resolve(this.lastID);
@@ -91,15 +92,15 @@ export async function getSpaceship(id:number):Promise<FullSpaceship>{
 }
 
 export async function updateSpaceship(data:SpaceshipRow) : Promise<unknown>{
-    const {name, color, damage, gas, id, lat, lng, military_power, size, survivors, survivors_description, value} = data;
+    const {name, color, damage, gas, id, lat, lng, danger, military_power, size, survivors, survivors_description, value} = data;
 
     return new Promise(async (resolve, reject) => {
         db.run(
             `
                 UPDATE spaceships
-                SET name=?, color=?, damage=?, gas=?, lat=?, lng=?, military_power=?, size=?, survivors=?, survivors_description=?, value=?
+                SET name=?, color=?, damage=?, gas=?, lat=?, lng=?, danger=?, military_power=?, size=?, survivors=?, survivors_description=?, value=?
                 WHERE id=?
-            `, [name, color, damage, gas, lat, lng, military_power, size, survivors, survivors_description, value, id],
+            `, [name, color, damage, gas, lat, lng, danger, military_power, size, survivors, survivors_description, value, id],
             function(error:Error|null){
                 if(error){
                     console.error(`Failed on Update Spaceship: ${error}`);
