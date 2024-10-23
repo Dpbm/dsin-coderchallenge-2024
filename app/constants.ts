@@ -34,6 +34,9 @@ export const gases = {
     lightning : 'Raios',
     planets: 'Planetas',
     supernova: 'Supernova'
+    water: 'Água',
+    hydrogen: 'Hidrogênio',
+    iridium: "Irídio",
 }
 
 

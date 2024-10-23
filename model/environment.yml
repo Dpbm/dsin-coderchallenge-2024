@@ -1,0 +1,14 @@
+name: dsin-coderchallenge
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - numpy
+    - matplotlib
+    - pandas
+    - tensorflow
+    - scikit-learn
+platforms:
+  - linux-64
