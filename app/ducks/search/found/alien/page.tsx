@@ -13,7 +13,7 @@ export default function Xenophagus(){
             style={{ height: '300px', width: '300px' }}
             src="/danger.lottie"/>
             <h1>É um FU***** xenófago!</h1>
-            <button onClick={() => redirect('/ducks/search/found/xenophagus/attack')}>entrar em modo de emergência!</button>
+            <button onClick={() => redirect('/ducks/search/found/alien/capture')}>entrar em modo de emergência!</button>
 
             <a href='/ducks/search'>Procurar mais!</a>
             <a href='/ducks'>Voltar ao inicio!</a>
