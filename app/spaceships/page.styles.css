@@ -1,0 +1,95 @@
+main header{
+    width: 100vw;
+    height: 60px;
+
+    padding: 10px 20px;
+    display: flex;
+    align-items: start;
+
+    position: fixed;
+    top:0;
+    z-index: 99999999;
+
+    background-color: white;
+}
+
+main header a svg{
+    color: #282A36;
+    transition: 0.2s;
+}
+
+main header a svg:hover{
+    color: #BD93F9;
+}
+
+
+#no-spaceships{
+    margin-top: 60px;
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#add-spaceship{
+    color: #F8F8F2;
+    background-color: #44475A;
+    text-decoration: none;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+#add-spaceship:hover{
+    cursor: pointer;
+    background-color: #6272A4;
+    color:#F8F8F2;
+}
+
+
+
+#spaceships-list{
+    transform: translateY(100px);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+#spaceships-actions{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+#spaceships-actions a{
+    color: #44475A;
+    background-color: #F8F8F2;
+    text-decoration: none;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+#spaceships-actions a:hover{
+    cursor: pointer;
+    background-color: #6272A4;
+    color:#F8F8F2;
+}
+
+#cards-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}

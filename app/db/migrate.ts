@@ -1,18 +1,18 @@
-import db from "./db";
+import db from './db';
 
-function logError(error:Error|null){
-    if(!error) return;
-    console.error(`Error on DB migration: ${error}`);
+function logError(error: Error | null) {
+	if (!error) return;
+	console.error(`Error on DB migration: ${error}`);
 }
 
-
-function migrate(){
-    db.serialize(() => {
-        db.run(
-            `
+function migrate() {
+	db.serialize(() => {
+		db.run(
+			`
                 CREATE TABLE IF NOT EXISTS spaceships (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT NOT NULL,
+                    image TEXT NOT NULL,
                     size TEXT NOT NULL,
                     color TEXT NOT NULL,
                     damage TEXT NOT NULL,
@@ -26,6 +26,7 @@ function migrate(){
                     military_power INTEGER NOT NULL,
                     classification TEXT NOT NULL,
 
+                    CHECK(typeof("image") = "text" AND length("image") >= 10 AND length("image") <= 300),
                     CHECK(typeof("name") = "text" AND length("name") >= 1 AND length("name") <= 30),
                     CHECK(typeof("size") = "text" AND length("size") >= 1 AND length("size") <= 8),
                     CHECK(typeof("color") = "text" AND length("color") >= 1 AND length("color") <= 8),
@@ -39,10 +40,10 @@ function migrate(){
                     CHECK(typeof("classification") = "text" AND length("classification") >= 1 AND length("classification") <= 28)
                 );            
             `,
-            logError
-        );
-        db.run(
-            `
+			logError
+		);
+		db.run(
+			`
                 CREATE TABLE IF NOT EXISTS weapons (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     spaceship_id INTEGER,
@@ -55,10 +56,10 @@ function migrate(){
                     CHECK(typeof("power") = "integer" AND power >= 1 AND power <= 10)
                 );
             `,
-            logError
-        );
-    });
-    db.close();
+			logError
+		);
+	});
+	db.close();
 }
 
 migrate();
