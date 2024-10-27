@@ -1,9 +1,8 @@
 import { SpaceshipClassification } from '@/app/types/spaceship';
 import Header from '../pageHeader';
-
-import '../pageHeader.styles.css';
-import './page.styles.css';
 import SpaceshipCard from './spaceshipCard';
+
+import './page.styles.css';
 
 export default async function Classification() {
 	const res = await fetch(process.env.URL + '/api/spaceships/classification');

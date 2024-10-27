@@ -4,7 +4,6 @@ import { createHash } from 'crypto';
 import Header from '../../pageHeader';
 
 import '../../formPage.styles.css';
-import '../../pageHeader.styles.css';
 
 type EditParams = {
 	params: {

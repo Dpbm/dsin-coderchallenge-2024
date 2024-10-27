@@ -1,5 +1,6 @@
 - [x] add home page
 - [ ] finish duck part
+- [ ] fix pages issues
 - [ ] add docker (docker hub as well)
 - [ ] vercel
 - [ ] readme

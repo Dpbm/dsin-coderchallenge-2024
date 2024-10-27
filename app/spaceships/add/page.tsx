@@ -11,7 +11,6 @@ import { validateNumber, validateString } from './validate';
 
 import '../form.styles.css';
 import '../formPage.styles.css';
-import '../pageHeader.styles.css';
 
 type FormErros = {
 	name: boolean | null;
