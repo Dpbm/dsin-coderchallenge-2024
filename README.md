@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DSIN - CODER CHALLENGE 2024
 
-## Getting Started
+Neste repositório você encontra a minha solução para a etapa bônus do DSIN Coder Challenge 2024.
+Para isso, foi feito uma aplicação web e um modelo de IA para a conclusão de cada um dos 3 requisitos.
 
-First, run the development server:
+As tecnologias usadas foram:
+
+- nodejs
+- python
+- TensorFlow (para criar e carregar o modelo)
+- NextJS
+- Sqlite3
+- CSS
+- Lottie (biblioteca para carregar animações em JSON)
+- GoogleMaps API (para o carregamento do mapa, usado para dizer onde a nave caiu)
+- PIXABAY API (para a aquisição de imagens para a nave)
+
+## Modelo (JOHN)
+
+O modelo + dataset utilizam bibliotecas do python (como numpy e pandas) para criar os dados e então estes são carregados para um rede neural usando o TensorFlow. Este modelo resultante pode ser então baixado e carregado usando o `TensorFlow JS`.
+
+O modelo criado para a competição pode ser baixado [aqui](https://github.com/Dpbm/dsin-coderchallenge-2024/releases/tag/v1.1).
+
+## Website
+
+O website utiliza a versão mais recente do NextJS para criar tanto o front-end como a API. Tomando também como proveito, a criação de componentes estáticos para deixar a navegação mais rápida.
+
+## Como executar
+
+Para executar o projeto, você precisa ter instalado na sua máquina:
+
+- [nodejs](https://nodejs.org/en)
+- [sqlite3](https://www.sqlite.org/download.html)
+
+Após a instalação das ferramentas, crie uma `API_KEY` tanto no [Google Maps](https://developers.google.com/maps/documentation/javascript/get-api-key), como no [PIXABAY](https://pixabay.com/api/docs/). Com as chaves na mão, adicione-as a um arquivo `.env` no diretorio seguindo o padrão do arquivo [.env.example](.env.example).
+
+Com isso, crie o banco de dados executando o comando:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run migrate
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Por fim, para rodar a aplicação execute:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# para modo desenvolvedor
+npm run dev
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# para rodar a aplicação de produção
+npm run build
+npm run start
+```
 
-## Learn More
+## Com Contribuir?
 
-To learn more about Next.js, take a look at the following resources:
+Para melhorar esse projeto, abra uma issue ou crie um pull request adicionando novas funções ou corrigindo falhas que você encontrou. Vamos criar algo bem massa ;)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
