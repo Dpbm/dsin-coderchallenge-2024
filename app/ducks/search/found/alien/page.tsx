@@ -1,23 +1,28 @@
 'use client';
 
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import { redirect } from 'next/navigation';
 
+import './page.styles.css';
 
-export default function Xenophagus(){
-    return (
-        <>
-         <DotLottieReact 
-            loop 
-            autoplay
-            style={{ height: '300px', width: '300px' }}
-            src="/danger.lottie"/>
-            <h1>É um FU***** xenófago!</h1>
-            <button onClick={() => redirect('/ducks/search/found/alien/capture')}>entrar em modo de emergência!</button>
+export default function Alien() {
+	return (
+		<main>
+			<DotLottieReact
+				loop
+				autoplay
+				style={{ height: '300px', width: '300px' }}
+				src='/danger.lottie'
+			/>
+			<h1>É um FU***** alien!</h1>
 
-            <a href='/ducks/search'>Procurar mais!</a>
-            <a href='/ducks'>Voltar ao inicio!</a>
-        </>
-       
-    );
+			<a href='/ducks/search/found/alien/capture' id='emergency-mode'>
+				Modo de emergência!
+			</a>
+
+			<div id='actions'>
+				<a href='/ducks/search'>Procurar mais!</a>
+				<a href='/'>Voltar ao inicio!</a>
+			</div>
+		</main>
+	);
 }

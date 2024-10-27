@@ -1,6 +1,6 @@
 - [x] add home page
 - [ ] finish duck part
-- [ ] fix pages issues
+- [ ] fix pages issues (classify when there're no spaceships, list spaceships)
 - [ ] add docker (docker hub as well)
 - [ ] vercel
 - [ ] readme
