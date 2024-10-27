@@ -7,9 +7,10 @@ import { Weapon } from '@/app/types/weapon';
 import { redirect } from 'next/navigation';
 import { sizes, colors, damages, gases, defaultPos } from '../../constants';
 import { ArrowLeft, X } from 'react-feather';
-
-import './page.styles.css';
 import { validateNumber, validateString } from './validate';
+
+import '../form.styles.css';
+import '../formPage.styles.css';
 
 type FormErros = {
 	name: boolean | null;

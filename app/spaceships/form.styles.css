@@ -1,45 +1,3 @@
-main header{
-    width: 100vw;
-    height: 60px;
-
-    padding: 10px 20px;
-    display: flex;
-    align-items: start;
-
-    position: fixed;
-    top:0;
-    z-index: 99999999;
-
-    background-color: white;
-}
-
-main header svg{
-    color: #282A36;
-    transition: 0.2s;
-}
-
-main header svg:hover{
-    cursor: pointer;
-    color: #BD93F9;
-}
-
-#forms-container{
-    width: 100vw;
-
-    padding: 10px;
-
-    transform: translateY(80px);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-#forms-title{
-    font-size: 30px;
-    margin: 10px;
-}
 
 .data-area-container{
     margin: 10px;
@@ -156,4 +114,11 @@ button{
     color:#FF5555;
     margin-top: 5px;
     font-size: 12px;
+}
+
+#buttons-container{
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
