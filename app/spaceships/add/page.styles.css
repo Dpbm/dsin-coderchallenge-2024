@@ -1,0 +1,159 @@
+main header{
+    width: 100vw;
+    height: 60px;
+
+    padding: 10px 20px;
+    display: flex;
+    align-items: start;
+
+    position: fixed;
+    top:0;
+    z-index: 99999999;
+
+    background-color: white;
+}
+
+main header svg{
+    color: #282A36;
+    transition: 0.2s;
+}
+
+main header svg:hover{
+    cursor: pointer;
+    color: #BD93F9;
+}
+
+#forms-container{
+    width: 100vw;
+
+    padding: 10px;
+
+    transform: translateY(80px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#forms-title{
+    font-size: 30px;
+    margin: 10px;
+}
+
+.data-area-container{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+form{
+    padding: 20px;
+}
+
+label{
+    font-size: 18px;
+    color: #282A36;
+}
+
+input{
+    border: 1px solid black;
+    outline: 0;
+
+    border-radius: 10px;
+
+    height: 30px;
+    padding: 20px;
+
+    font-size: 16px;
+}
+
+select{
+    border: 1px solid black;
+    outline: 0;
+
+    background-color: white;
+
+    border-radius: 10px;
+
+    padding: 10px;
+
+    font-size: 16px; 
+}
+
+textarea{
+    border: 1px solid;
+    border-radius: 10px;
+    outline: 0;
+
+    height: 100px;
+
+    padding: 10px;
+    font-size: 16px;
+
+    resize: none;
+}
+
+button{
+    width: 100%;
+
+    outline: 0;
+    border: 1px solid black;
+
+    padding: 10px;
+
+    background-color: white;
+
+    border-radius: 10px;
+}
+
+.button-enabled:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.button-disabled{
+    border: 1px solid #ccc;
+    color: #888;
+}
+
+
+#military-power-container{
+    background-color: #F8F8F2;
+
+    border-radius: 10px;
+
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+#weapons-container{
+    padding: 10px;
+
+}
+
+.added-weapon{
+    padding: 10px;
+    margin: 10px;
+
+    background-color: white;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.added-weapon p{
+    text-transform: capitalize;
+}
+
+
+.added-weapon svg:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.form-error{
+    color:#FF5555;
+    margin-top: 5px;
+    font-size: 12px;
+}
