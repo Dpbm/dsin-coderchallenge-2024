@@ -1,8 +1,9 @@
 import { SpaceshipClassification } from '@/app/types/spaceship';
-import Header from '../pageHeader';
+import Header from '../../pageHeader';
 import SpaceshipCard from './spaceshipCard';
 
 import './page.styles.css';
+import NoSpaceships from '../noSpaceships';
 
 export default async function Classification() {
 	const res = await fetch(process.env.URL + '/api/spaceships/classification');
@@ -12,30 +13,37 @@ export default async function Classification() {
 		<main>
 			<Header />
 
-			<div id='data-container'>
-				<p id='data-disclaimer'>
-					*A classificação das Naves é dada partir da análise do:
-					tamanho, estado, tipo de combustível, grau de
-					periculosidade, valor estimado e poderio militar; Feito pela
-					nossa inteligencia artificial super avançada{' '}
-					<strong>
-						<i>JOHN</i>
-					</strong>
-				</p>
+			{spaceships.length <= 0 ? (
+				<NoSpaceships />
+			) : (
+				<div id='data-container'>
+					<p id='data-disclaimer'>
+						*A classificação das Naves é dada partir da análise do:
+						tamanho, estado, tipo de combustível, grau de
+						periculosidade, valor estimado e poderio militar; Feito
+						pela nossa inteligencia artificial super avançada{' '}
+						<strong>
+							<i>JOHN</i>
+						</strong>
+					</p>
 
-				<div id='cards-container'>
-					{spaceships.map(
-						(spaceship: SpaceshipClassification, index: number) => {
-							return (
-								<SpaceshipCard
-									spaceship={spaceship}
-									key={index}
-								/>
-							);
-						}
-					)}
+					<div id='cards-container'>
+						{spaceships.map(
+							(
+								spaceship: SpaceshipClassification,
+								index: number
+							) => {
+								return (
+									<SpaceshipCard
+										spaceship={spaceship}
+										key={index}
+									/>
+								);
+							}
+						)}
+					</div>
 				</div>
-			</div>
+			)}
 		</main>
 	);
 }

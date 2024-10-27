@@ -6,8 +6,9 @@ import { useState } from 'react';
 import { Weapon } from '@/app/types/weapon';
 import { redirect } from 'next/navigation';
 import { sizes, colors, damages, gases, defaultPos } from '../../constants';
-import { ArrowLeft, X } from 'react-feather';
+import { X } from 'react-feather';
 import { validateNumber, validateString } from './validate';
+import Header from '@/app/pageHeader';
 
 import '../form.styles.css';
 import '../formPage.styles.css';
@@ -181,9 +182,7 @@ export default function Add() {
 
 	return (
 		<main>
-			<header>
-				<ArrowLeft size={40} onClick={() => redirect('/spaceships')} />
-			</header>
+			<Header />
 
 			<div id='forms-container'>
 				<h1 id='forms-title'>Adicione uma Nave</h1>

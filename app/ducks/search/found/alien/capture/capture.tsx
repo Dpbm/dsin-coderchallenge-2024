@@ -34,7 +34,7 @@ export default function Capture({ isAGroup, alienName }: CaptureProps) {
 	return (
 		<div id='caught-container'>
 			{caught ? (
-				<ReactConfetti width={width} height={1.3 * height} />
+				<ReactConfetti width={width} height={1.2 * height} />
 			) : null}
 
 			<img

@@ -1,5 +1,4 @@
 import { SpaceshipPreview } from '../types/spaceship';
-import Image from 'next/image';
 
 import './spaceshipCard.styles.css';
 
@@ -14,12 +13,7 @@ export default function SpaceshipCard({ spaceship }: SpaceshipCardProps) {
 			href={`/spaceships/edit/${spaceship.id}`}
 		>
 			<div className='spaceship-card'>
-				<Image
-					src={spaceship.image}
-					alt='image da nave'
-					width={400}
-					height={280}
-				></Image>
+				<img src={spaceship.image} alt='image da nave'></img>
 				<div className='spaceship-data'>
 					<p className='spaceship-name'>
 						{spaceship.name}{' '}

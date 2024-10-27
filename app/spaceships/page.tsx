@@ -1,6 +1,7 @@
 import { SpaceshipPreview } from '../types/spaceship';
 import SpaceshipCard from './spaceshipCard';
-import { Home } from 'react-feather';
+import NoSpaceships from './noSpaceships';
+import Header from '../pageHeader';
 
 import './page.styles.css';
 
@@ -10,19 +11,10 @@ export default async function Spaceships() {
 
 	return (
 		<main>
-			<header>
-				<a href='/'>
-					<Home size={40} />
-				</a>
-			</header>
+			<Header />
 
 			{spaceships.length <= 0 ? (
-				<div id='no-spaceships'>
-					<h1>Nenhuma nave cadastrada</h1>
-					<a href='/spaceships/add' id='add-spaceship'>
-						Cadastrar
-					</a>
-				</div>
+				<NoSpaceships />
 			) : (
 				<div id='spaceships-list'>
 					<h1>Todas as naves cadastradas</h1>

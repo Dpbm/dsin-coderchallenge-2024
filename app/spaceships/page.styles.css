@@ -23,32 +23,6 @@ main header a svg:hover{
 }
 
 
-#no-spaceships{
-    height: 90vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-#add-spaceship{
-    color: #F8F8F2;
-    background-color: #44475A;
-    text-decoration: none;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    font-size: 14px;
-    transition: 0.2s;
-}
-
-#add-spaceship:hover{
-    cursor: pointer;
-    background-color: #6272A4;
-    color:#F8F8F2;
-}
-
 
 
 #spaceships-list{

@@ -22,6 +22,8 @@
 
 .spaceship-card img{
     border-radius: 10px;
+    width:200px;
+    height: 200px;
 }
 
 .spaceship-data{

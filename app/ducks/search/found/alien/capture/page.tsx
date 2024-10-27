@@ -1,6 +1,6 @@
 import { getAlien, getSituation } from './aliens';
 import Capture from './capture';
-import { Home } from 'react-feather';
+import Header from '@/app/pageHeader';
 
 import './page.styles.css';
 import '../../../../../pageHeader.styles.css';
@@ -16,11 +16,8 @@ export default function Attack() {
 
 	return (
 		<main>
-			<header>
-				<a href='/'>
-					<Home size={40} />
-				</a>
-			</header>
+			<Header />
+
 			<div id='data-container'>
 				<div id='situtation-header'>
 					<p id='situation-text'>{situation.story}</p>

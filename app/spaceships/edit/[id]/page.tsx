@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import Form from './form';
 import { createHash } from 'crypto';
-import Header from '../../pageHeader';
+import Header from '../../../pageHeader';
 
 import '../../formPage.styles.css';
 

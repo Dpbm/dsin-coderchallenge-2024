@@ -1,7 +1,7 @@
 'use client';
 
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import { Home } from 'react-feather';
+import Header from '../pageHeader';
 
 import './page.styles.css';
 import '../pageHeader.styles.css';
@@ -9,11 +9,7 @@ import '../pageHeader.styles.css';
 export default function Ducks() {
 	return (
 		<main>
-			<header>
-				<a href='/'>
-					<Home size={40} />
-				</a>
-			</header>
+			<Header />
 
 			<div id='data-container'>
 				<DotLottieReact
