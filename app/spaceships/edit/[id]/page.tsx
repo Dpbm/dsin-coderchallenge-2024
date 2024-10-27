@@ -17,7 +17,7 @@ export default async function Edit({ params }: EditParams) {
 	try {
 		id = (await params).id;
 		const res = await fetch(
-			(process.env.URL || process.env.VERCEL_URL) +
+			(process.env.URL || 'http://' + process.env.VERCEL_URL) +
 				`/api/spaceship?id=${id}`
 		);
 		spaceship = await res.json();
