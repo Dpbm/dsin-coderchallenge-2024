@@ -7,6 +7,7 @@ As tecnologias usadas foram:
 
 - nodejs
 - python
+- typescript
 - TensorFlow (para criar e carregar o modelo)
 - NextJS
 - Sqlite3
