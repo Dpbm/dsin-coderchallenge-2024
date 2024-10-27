@@ -18,6 +18,7 @@
     "react-confetti": "^6.1.0",
     "react-dom": "19.0.0-rc-65a56d0e-20241020",
     "react-feather": "^2.0.10",
+    "react-use": "^17.5.1",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {

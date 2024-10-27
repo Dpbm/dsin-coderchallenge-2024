@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { caughtAlien } from './aliens';
+import ReactConfetti from 'react-confetti';
+import { useWindowSize } from 'react-use';
 
 import './capture.styles.css';
-import ReactConfetti from 'react-confetti';
 
 type CaptureProps = {
 	isAGroup: boolean;
@@ -12,6 +13,8 @@ type CaptureProps = {
 };
 
 export default function Capture({ isAGroup, alienName }: CaptureProps) {
+	const { width, height } = useWindowSize();
+
 	const [capturing, setCapturing] = useState(false);
 	const [caught, setCaught] = useState(false);
 
@@ -31,10 +34,7 @@ export default function Capture({ isAGroup, alienName }: CaptureProps) {
 	return (
 		<div id='caught-container'>
 			{caught ? (
-				<ReactConfetti
-					width={window.innerWidth - 30}
-					height={window.innerHeight}
-				/>
+				<ReactConfetti width={width} height={1.3 * height} />
 			) : null}
 
 			<img
