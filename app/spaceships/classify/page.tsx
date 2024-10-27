@@ -6,8 +6,15 @@ import './page.styles.css';
 import NoSpaceships from '../noSpaceships';
 
 export default async function Classification() {
-	const res = await fetch(process.env.URL + '/api/spaceships/classification');
-	const spaceships = await res.json();
+	let spaceships = [];
+	try {
+		const res = await fetch(
+			process.env.URL + '/api/spaceships/classification'
+		);
+		spaceships = await res.json();
+	} catch (error) {
+		console.error(`Failed on Get spaceships classification: ${error}`);
+	}
 
 	return (
 		<main>

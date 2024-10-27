@@ -6,8 +6,13 @@ import Header from '../pageHeader';
 import './page.styles.css';
 
 export default async function Spaceships() {
-	const res = await fetch(process.env.URL + '/api/spaceships');
-	const spaceships = await res.json();
+	let spaceships = [];
+	try {
+		const res = await fetch(process.env.URL + '/api/spaceships');
+		spaceships = await res.json();
+	} catch (error) {
+		console.error(`Failed on get Spaceships: ${error}`);
+	}
 
 	return (
 		<main>

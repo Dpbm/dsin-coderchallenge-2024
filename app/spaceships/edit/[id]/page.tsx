@@ -6,9 +6,9 @@ import Header from '../../../pageHeader';
 import '../../formPage.styles.css';
 
 type EditParams = {
-	params: {
+	params: Promise<{
 		id: number;
-	};
+	}>;
 };
 
 export default async function Edit({ params }: EditParams) {

@@ -1,7 +1,6 @@
 'use client';
 
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-
 import './page.styles.css';
 
 export default function Alien() {
@@ -21,7 +20,9 @@ export default function Alien() {
 
 			<div id='actions'>
 				<a href='/ducks/search'>Procurar mais!</a>
+				{/* eslint-disable */}
 				<a href='/'>Voltar ao inicio!</a>
+				{/* eslint-enable */}
 			</div>
 		</main>
 	);

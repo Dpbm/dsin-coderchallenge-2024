@@ -16,7 +16,9 @@ export default function Duck() {
 			<h1>🙃Ufa, é apenas um pato comum🙃</h1>
 			<div id='actions'>
 				<a href='/ducks/search'>Procurar mais!</a>
+				{/* eslint-disable */}
 				<a href='/'>Voltar ao inicio!</a>
+				{/* eslint-enable */}s{' '}
 			</div>
 		</main>
 	);

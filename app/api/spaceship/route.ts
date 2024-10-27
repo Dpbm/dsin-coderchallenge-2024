@@ -9,6 +9,10 @@ import { Spaceship } from '@/app/types/spaceship';
 import { Weapon, WeaponRow } from '@/app/types/weapon';
 import { NextRequest, NextResponse } from 'next/server';
 
+type parsedData = {
+	[key: string]: number | string;
+};
+
 export async function POST(request: NextRequest) {
 	const data = await request.formData();
 
@@ -20,20 +24,21 @@ export async function POST(request: NextRequest) {
 		'military_power',
 		'danger',
 	];
-	const parsedData: Spaceship = {};
+	const parsedData: parsedData = {};
 
 	let weapons: Weapon[] = [];
+	console.log(Object.entries(data));
 
-	data.forEach((entry: any, name: string) => {
+	data.forEach((entry: FormDataEntryValue, name: string) => {
 		if (numericFields.includes(name)) parsedData[name] = Number(entry);
-		else if (name === 'weapons') weapons = JSON.parse(entry);
-		else parsedData[name] = entry;
+		else if (name === 'weapons') weapons = JSON.parse(String(entry));
+		else parsedData[name] = String(entry);
 	});
 
 	let spaceshipId = null;
 
 	try {
-		spaceshipId = await insertSpaceship(parsedData);
+		spaceshipId = await insertSpaceship(parsedData as Spaceship);
 	} catch (error) {
 		console.error(`Failed on insert Spaceship route: ${error}`);
 		return NextResponse.json(
