@@ -1,27 +1,45 @@
-import Image from "next/image";
-import { getAlien, getSituation } from "./aliens";
-import Capture from "./capture";
+import { getAlien, getSituation } from './aliens';
+import Capture from './capture';
 
-export default function Attack(){
+import './page.styles.css';
 
-    const alien = getAlien();
-    const situation = getSituation();
+export default function Attack() {
+	const alien = getAlien();
+	const situation = getSituation();
 
-    const attack = alien.attacks[ situation.group ? 'group' : 'alone' ][situation.distant ? 'distant' : 'close'];
+	const attack =
+		alien.attacks[situation.group ? 'group' : 'alone'][
+			situation.distant ? 'distant' : 'close'
+		];
 
-   
+	return (
+		<main>
+			<header>
+				<p id='situation-text'>{situation.story}</p>
 
-    return (
-        <>
-            <p>{situation.story}</p>
-            <p>Você encontrou o {alien.name}!!!!</p>
-            <Image src={alien.image} alt="Imagem do alien" width={300} height={300}></Image>
-            <p>Poder: {alien.power}+</p>
-            <p>{attack}</p>
-            <p>{alien.story}</p>
-            
-            <p>Você usou seu ataque e conseguiu atordoar seu oponente, não perca tempo, capture-o</p>
-            <Capture isAGroup={situation.group} alienName={alien.name} />
-        </>
-    );
+				<p id='alien-presentation'>Você encontrou o {alien.name}!!!!</p>
+			</header>
+
+			<div id='alien-container'>
+				<div id='alien-data'>
+					<img src={alien.image} alt={`Imagem do ${alien.name}`} />
+					<p id='alien-power'>Poder: {alien.power}+</p>
+				</div>
+				<div>
+					<h1>História do {alien.name}</h1>
+					<p id='alien-story'>{alien.story}</p>
+				</div>
+			</div>
+
+			<div id='capture-container'>
+				<p>{attack}</p>
+
+				<p>
+					Você usou seu ataque e conseguiu atordoar seu oponente, não
+					perca tempo, capture-o
+				</p>
+				<Capture isAGroup={situation.group} alienName={alien.name} />
+			</div>
+		</main>
+	);
 }

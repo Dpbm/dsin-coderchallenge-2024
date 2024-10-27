@@ -1,0 +1,68 @@
+main{
+    padding: 10px;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#situation-text{
+    font-size: 25px;
+    margin: 10px;
+    text-decoration: underline;
+    text-align: start;
+}
+
+#alien-presentation{
+    font-size: 40px;
+    font-weight: bold;
+    margin: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+#alien-container{
+    padding: 20px;
+}
+
+#alien-data{
+    padding : 10px;
+    float: left;
+}
+
+#alien-data img{
+    border-radius: 10px;
+    width: 500px;
+    height: 500px;
+}
+
+#alien-power{
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#alien-story{
+    font-size: 18px;
+}
+
+#capture-container{
+    clear: both;
+    margin: 20px;
+    padding: 10px;
+
+    background-color: #6272A4;
+    border-radius: 10px;
+}
+
+#capture-container p{
+    margin: 10px 0;
+
+    color: #F8F8F2;
+
+    font-size: 20px;
+    text-align: start;
+}
