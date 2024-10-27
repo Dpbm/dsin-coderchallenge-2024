@@ -27,7 +27,6 @@ export async function POST(request: NextRequest) {
 	const parsedData: parsedData = {};
 
 	let weapons: Weapon[] = [];
-	console.log(Object.entries(data));
 
 	data.forEach((entry: FormDataEntryValue, name: string) => {
 		if (numericFields.includes(name)) parsedData[name] = Number(entry);

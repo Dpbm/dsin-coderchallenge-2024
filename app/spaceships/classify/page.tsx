@@ -9,8 +9,7 @@ export default async function Classification() {
 	let spaceships = [];
 	try {
 		const res = await fetch(
-			(process.env.URL || 'http://' + process.env.VERCEL_URL) +
-				'/api/spaceships/classification'
+			process.env.URL + '/api/spaceships/classification'
 		);
 		spaceships = await res.json();
 	} catch (error) {
