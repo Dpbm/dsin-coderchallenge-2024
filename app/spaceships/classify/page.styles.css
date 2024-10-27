@@ -1,0 +1,19 @@
+#data-container{
+    transform: translateY(70px);
+    display: flex;
+    padding:10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+#data-disclaimer{
+    font-size: 12px;
+}
+
+#cards-container{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

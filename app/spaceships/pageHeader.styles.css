@@ -1,0 +1,24 @@
+main header{
+    width: 100vw;
+    height: 60px;
+
+    padding: 10px 20px;
+    display: flex;
+    align-items: start;
+
+    position: fixed;
+    top:0;
+    z-index: 99999999;
+
+    background-color: white;
+}
+
+main header svg{
+    color: #282A36;
+    transition: 0.2s;
+}
+
+main header svg:hover{
+    cursor: pointer;
+    color: #BD93F9;
+}

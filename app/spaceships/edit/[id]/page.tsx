@@ -1,9 +1,10 @@
 import { redirect } from 'next/navigation';
 import Form from './form';
 import { createHash } from 'crypto';
+import Header from '../../pageHeader';
 
 import '../../formPage.styles.css';
-import Header from './pageHeader';
+import '../../pageHeader.styles.css';
 
 type EditParams = {
 	params: {

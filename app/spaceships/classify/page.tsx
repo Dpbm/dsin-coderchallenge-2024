@@ -1,29 +1,42 @@
-import { SpaceshipClassification } from "@/app/types/spaceship";
+import { SpaceshipClassification } from '@/app/types/spaceship';
+import Header from '../pageHeader';
 
-export default async function Classification(){
-    const res = await fetch(process.env.URL+'/api/spaceships/classification');
-    const spaceships = await res.json();
+import '../pageHeader.styles.css';
+import './page.styles.css';
+import SpaceshipCard from './spaceshipCard';
 
-    return (
-        <>
-            <a href="/spaceships">Lista de Naves</a>
+export default async function Classification() {
+	const res = await fetch(process.env.URL + '/api/spaceships/classification');
+	const spaceships = await res.json();
 
-            <span>*A classificação das Naves é dada partir da análise do: tamanho, estado, tipo de combustível, grau de periculosidade, valor estimado e poderio militar; Feito pela nossa inteligencia artificial super avançada <strong><i>JOHN</i></strong></span>
+	return (
+		<main>
+			<Header />
 
-            {spaceships.map((spaceship:SpaceshipClassification, index:number) => {
-                return <div key={index}>
-                    <p>nome: {spaceship.name}</p>
-                    <p>tamanho: {spaceship.size}</p>
-                    <p>estado: {spaceship.damage}</p>
-                    <p>combustível: {spaceship.gas}</p>
-                    <p>periculosidade: {spaceship.danger}</p>
-                    <p>valor: {spaceship.value}</p>
-                    <p>poder militar: {spaceship.military_power}</p>
-                    <p>classificação: {spaceship.classification}</p>
-                </div>
-            })}
-        
-        </>
-    );
+			<div id='data-container'>
+				<p id='data-disclaimer'>
+					*A classificação das Naves é dada partir da análise do:
+					tamanho, estado, tipo de combustível, grau de
+					periculosidade, valor estimado e poderio militar; Feito pela
+					nossa inteligencia artificial super avançada{' '}
+					<strong>
+						<i>JOHN</i>
+					</strong>
+				</p>
 
+				<div id='cards-container'>
+					{spaceships.map(
+						(spaceship: SpaceshipClassification, index: number) => {
+							return (
+								<SpaceshipCard
+									spaceship={spaceship}
+									key={index}
+								/>
+							);
+						}
+					)}
+				</div>
+			</div>
+		</main>
+	);
 }
