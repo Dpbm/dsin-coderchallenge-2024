@@ -57,7 +57,8 @@ export default function Form({ spaceship, initialHash }: FormProps) {
 		event.preventDefault();
 
 		let newValue: number | string = event.target.value;
-		if (!isNaN(Number(newValue))) newValue = Number(newValue);
+		if (newValue != '' && !isNaN(Number(newValue)))
+			newValue = Number(newValue);
 
 		setData({ ...data, [event.target.name]: newValue });
 	}

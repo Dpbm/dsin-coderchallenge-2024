@@ -2,11 +2,9 @@ import db from './db';
 import {
 	SpaceshipPreview,
 	Spaceship,
-	FullSpaceship,
 	SpaceshipRow,
 	SpaceshipClassification,
 } from '../types/spaceship';
-import { WeaponRow } from '../types/weapon';
 import * as tf from '@tensorflow/tfjs';
 import { classify, disposeModel } from './utils/jonh';
 import getImage from './utils/images';
@@ -123,8 +121,8 @@ export async function getSpaceshipsForClassification(): Promise<
 	});
 }
 
-export async function getSpaceship(id: number): Promise<FullSpaceship> {
-	const spaceship: SpaceshipRow = await new Promise((resolve, reject) => {
+export async function getSpaceship(id: number): Promise<SpaceshipRow> {
+	return new Promise((resolve, reject) => {
 		db.get(
 			`SELECT * FROM spaceships WHERE id = ?;`,
 			[id],
@@ -139,26 +137,6 @@ export async function getSpaceship(id: number): Promise<FullSpaceship> {
 			}
 		);
 	});
-
-	const weapons: WeaponRow[] = await new Promise((resolve, reject) => {
-		db.all(
-			`SELECT * FROM weapons WHERE spaceship_id = ?;`,
-			[id],
-			function (error: Error | null, rows: WeaponRow[]) {
-				if (!error) {
-					resolve(rows || []);
-					return;
-				}
-
-				console.error(`Failed on Get Spaceship Weapons: ${error}`);
-				reject(error);
-			}
-		);
-	});
-
-	const data: FullSpaceship = { ...spaceship, weapons: weapons };
-
-	return data;
 }
 
 export async function updateSpaceship(data: SpaceshipRow): Promise<unknown> {
@@ -201,8 +179,8 @@ export async function updateSpaceship(data: SpaceshipRow): Promise<unknown> {
 				survivors,
 				survivors_description,
 				value,
-				id,
 				classification,
+				id,
 			],
 			function (error: Error | null) {
 				if (error) {

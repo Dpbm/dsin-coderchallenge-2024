@@ -5,6 +5,8 @@ import Header from '../pageHeader';
 
 import './page.styles.css';
 
+export const revalidate = 0;
+
 export default async function Spaceships() {
 	let spaceships = [];
 	try {

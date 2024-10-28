@@ -33,7 +33,7 @@ Para executar o projeto, você precisa ter instalado na sua máquina:
 - [nodejs](https://nodejs.org/en)
 - [sqlite3](https://www.sqlite.org/download.html)
 
-Após a instalação das ferramentas, crie uma `API_KEY` tanto no [Google Maps](https://developers.google.com/maps/documentation/javascript/get-api-key), como no [PIXABAY](https://pixabay.com/api/docs/). Com as chaves na mão, adicione-as a um arquivo `.env` no diretorio seguindo o padrão do arquivo [.env.example](.env.example).
+Após a instalação das ferramentas, crie uma `API_KEY` tanto no [Google Maps](https://developers.google.com/maps/documentation/javascript/get-api-key), como no [PIXABAY](https://pixabay.com/api/docs/). Com as chaves na mão, adicione-as a um arquivo `.env` no diretório seguindo o padrão do arquivo [.env.example](.env.example).
 
 Com isso, crie o banco de dados executando o comando:
 
@@ -55,7 +55,3 @@ npm run start
 ## Com Contribuir?
 
 Para melhorar esse projeto, abra uma issue ou crie um pull request adicionando novas funções ou corrigindo falhas que você encontrou. Vamos criar algo bem massa ;)
-
-
-
-

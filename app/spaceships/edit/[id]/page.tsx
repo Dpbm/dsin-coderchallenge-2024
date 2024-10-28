@@ -11,6 +11,8 @@ type EditParams = {
 	}>;
 };
 
+export const revalidate = 0;
+
 export default async function Edit({ params }: EditParams) {
 	let spaceship, id, hash;
 
@@ -18,7 +20,6 @@ export default async function Edit({ params }: EditParams) {
 		id = (await params).id;
 		const res = await fetch(process.env.URL + `/api/spaceship?id=${id}`);
 		spaceship = await res.json();
-
 		hash = createHash('sha256')
 			.update(JSON.stringify(spaceship))
 			.digest('hex');

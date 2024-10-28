@@ -3,7 +3,7 @@ import {
 	getSpaceship,
 	insertSpaceship,
 } from '@/app/db/spaceships';
-import { deleteWeapons, insertWeapons } from '@/app/db/weapons';
+import { deleteWeapons, getWeapons, insertWeapons } from '@/app/db/weapons';
 import { updateSpaceship } from '@/app/db/spaceships';
 import { Spaceship } from '@/app/types/spaceship';
 import { Weapon, WeaponRow } from '@/app/types/weapon';
@@ -89,9 +89,10 @@ export async function GET(request: NextRequest) {
 			{ status: 404 }
 		);
 
+	let spaceship, weapons;
+
 	try {
-		const data = await getSpaceship(parseInt(id));
-		return NextResponse.json(data, { status: 200 });
+		spaceship = await getSpaceship(parseInt(id));
 	} catch (error) {
 		console.error(`Failed on get Spaceship: ${error}`);
 		return NextResponse.json(
@@ -102,6 +103,21 @@ export async function GET(request: NextRequest) {
 			{ status: 500 }
 		);
 	}
+
+	try {
+		weapons = await getWeapons(parseInt(id));
+	} catch (error) {
+		console.error(`Failed on get Weapons: ${error}`);
+		return NextResponse.json(
+			{
+				message:
+					'Falha ao tentar pegar os dados das armas da nave! Por favor tente novamente mais tarde!',
+			},
+			{ status: 500 }
+		);
+	}
+
+	return NextResponse.json({ ...spaceship, weapons }, { status: 200 });
 }
 
 export async function PUT(request: NextRequest) {

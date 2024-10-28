@@ -5,6 +5,8 @@ import SpaceshipCard from './spaceshipCard';
 import './page.styles.css';
 import NoSpaceships from '../noSpaceships';
 
+export const revalidate = 0;
+
 export default async function Classification() {
 	let spaceships = [];
 	try {
