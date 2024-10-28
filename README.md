@@ -16,6 +16,11 @@ As tecnologias usadas foram:
 - GoogleMaps API (para o carregamento do mapa, usado para dizer onde a nave caiu)
 - PIXABAY API (para a aquisição de imagens para a nave)
 
+## Demo
+
+[![Video de demonstração](https://img.youtube.com/vi/LGmVADPEUKk/0.jpg)](https://youtu.be/LGmVADPEUKk)
+
+
 ## Modelo (JOHN)
 
 O modelo + dataset utilizam bibliotecas do python (como numpy e pandas) para criar os dados e então estes são carregados para um rede neural usando o TensorFlow. Este modelo resultante pode ser então baixado e carregado usando o `TensorFlow JS`.
