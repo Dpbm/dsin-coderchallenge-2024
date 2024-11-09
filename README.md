@@ -57,6 +57,6 @@ npm run build
 npm run start
 ```
 
-## Com Contribuir?
+## Como Contribuir?
 
 Para melhorar esse projeto, abra uma issue ou crie um pull request adicionando novas funções ou corrigindo falhas que você encontrou. Vamos criar algo bem massa ;)
